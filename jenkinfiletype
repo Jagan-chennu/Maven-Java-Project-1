@@ -20,7 +20,7 @@ pipeline
                  git 'https://github.com/narendrasai316/Maven-Java-Project.git'
                  stash 'source'
                  script{
-			        mvnHome = tool 'maven3.6'
+			        mvnHOME = tool 'maven3.6'
 			    }
                  }
                  }
