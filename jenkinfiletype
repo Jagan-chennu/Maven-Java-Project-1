@@ -47,7 +47,7 @@ pipeline
                  sh " '${mvnHOME}/bin/mvn' clean deploy "
                  }
                  post {
-                 	alwys {
+                 	always {
                  		junit healthScaleFactor: 5.0, testResults: 'target/surefire-reports/*.xml'
                  		archiveArtifacts '**/*'
                  		fingerprint '**/*'
