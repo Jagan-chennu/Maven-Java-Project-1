@@ -1,0 +1,67 @@
+def mvnHOME
+def remote = [:]
+		remote.name = 'deploy'
+		remote.host = '192.168.33.59'
+		remote.user = 'root'
+		remote.password = 'vagrant'
+		remote.allowAnyHosts = true
+pipeline 
+{
+	node none
+	
+        stages
+        {
+        	stage ('preparation') {
+        		node('Slave') {
+                 // some block
+                 }
+                 steps {
+
+                 git 'https://github.com/narendrasai316/Maven-Java-Project.git'
+                 stash 'source'
+                 mvnHOME = tool 'maven3.6'
+
+                 }
+                 }
+
+            stage ('static_analysis') {
+            	node('Slave') {
+                 // some block
+                 }
+                 steps {
+                    sh " '${mvnHOME}/bin/mvn' clean cobertura:cobertura "
+                 }
+                 post {
+                 		success {
+                 			cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
+                 		}
+                 }
+
+            }
+            stage ('build') {
+            	node('Slave') {
+                 // some block
+                 }
+                 steps {
+                 sh " '${mvnHOME}/bin/mvn' clean deploy "
+                 }
+                 post {
+                 	alwys {
+                 		junit healthScaleFactor: 5.0, testResults: 'target/surefire-reports/*.xml'
+                 		archiveArtifacts '**/*'
+                 		fingerprint '**/*'
+                 	}
+                 }
+
+
+            }
+            stage ('deploy-to-container') {
+            	node('Slave') {
+                 // some block
+                 }
+                 steps {
+                 		sshPut remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/root/workspace/tomcat/webapps'
+                 }	
+            }           
+        }
+}
