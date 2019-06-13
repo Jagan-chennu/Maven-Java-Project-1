@@ -52,7 +52,8 @@ pipeline {
       }
       steps {
         sh " '${mvnHOME}/bin/mvn' clean package "
-        sshPut(remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/root/workspace/tomcat/webapps')
+        sh " scp /home/vagrant/Jenkin_Practise/workspace/ocean_blue_master/target java-maven-1.0-SNAPSHOT.war root@192.168.33.59:/root/workspace/tomcat/webapps "
+
       }
     }
   }
