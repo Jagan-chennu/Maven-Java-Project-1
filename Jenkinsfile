@@ -44,7 +44,7 @@ pipeline
                  	label 'Slave'
                  }
                  steps {
-              
+                 sh " '${mvnHOME}/bin/mvn' clean deploy "
 		 sh " '${mvnHOME}/bin/mvn' -v "
 		 sh " cd ~/.bashrc "
                  }
@@ -63,8 +63,7 @@ pipeline
                  label 'Slave'
                  }
                  steps {
-                 	 sh " '${mvnHOME}/bin/mvn' clean package "
-			 
+                 	 sh " '${mvnHOME}/bin/mvn' clean package " 
 			 sshPut remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/root/workspace/tomcat/webapps'
                  }	
             }           
