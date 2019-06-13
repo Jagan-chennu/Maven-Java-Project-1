@@ -1,9 +1,9 @@
 def mvnHOME
 def remote = [:]
 		remote.name = 'deploy'
-		remote.host = '35.154.113.73'
+		remote.host = '192.168.33.59'
 		remote.user = 'root'
-		remote.password = 'stage'
+		remote.password = 'vagrant'
 		remote.allowAnyHosts = true
 pipeline 
 {
@@ -13,7 +13,7 @@ pipeline
         {
         	stage ('preparation') {
         		agent {
-                 	label 'slave'
+                 	label 'Slave'
                  }
                  steps {
 
@@ -27,7 +27,7 @@ pipeline
 
             stage ('static_analysis') {
             	agent {
-                 	label 'slave'
+                 	label 'Slave'
                  }
                  steps {
                     sh " '${mvnHOME}/bin/mvn' clean cobertura:cobertura "
@@ -41,7 +41,7 @@ pipeline
             }
             stage ('build') {
             	agent {
-                 	label 'slave'
+                 	label 'Slave'
                  }
                  steps {
                  sh " '${mvnHOME}/bin/mvn' clean deploy "
@@ -58,10 +58,10 @@ pipeline
             }
             stage ('deploy-to-container') {
             	agent {
-                 label 'slave'
+                 label 'Slave'
                  }
                  steps {
-                 		sshPut remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/u01/stage_server/webapps'
+                 		sshPut remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/root/workspace/tomcat/webapps'
                  }	
             }           
         }
