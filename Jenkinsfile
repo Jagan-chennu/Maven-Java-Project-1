@@ -52,7 +52,7 @@ pipeline {
       }
       steps {
         sh " '${mvnHOME}/bin/mvn' clean package "
-        sh " scp target/*.war root@192.168.33.59:/root/workspace/tomcat/webapps '
+        sh " scp target/*.war root@192.168.33.59:/root/workspace/tomcat/webapps "
       }
     }
   }
