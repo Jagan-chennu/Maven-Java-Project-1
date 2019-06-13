@@ -44,7 +44,7 @@ pipeline
                  	label 'Slave'
                  }
                  steps {
-                 sh " '${mvnHOME}/bin/mvn' clean deploy "
+              
 		 sh " '${mvnHOME}/bin/mvn' -v "
 		 sh " cd ~/.bashrc "
                  }
