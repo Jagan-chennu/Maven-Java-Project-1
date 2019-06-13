@@ -18,7 +18,7 @@ pipeline
                  steps {
 
                  git 'https://github.com/narendrasai316/Maven-Java-Project.git'
-                 stash 'source'
+                 
                  script{
 			        mvnHOME = tool 'maven3.6'
 			    }
