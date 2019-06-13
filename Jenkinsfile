@@ -6,7 +6,7 @@ pipeline {
         label 'Slave'
       }
       steps {
-        git(url: 'https://github.com/narendrasai316/Maven-Java-Project.git', branch: 'master', poll: true)
+        git(url: 'https://github.com/narendrasai316/Maven-Java-Project.git', branch: 'master')
         script {
           mvnHOME = tool 'maven3.6'
         }
@@ -52,8 +52,7 @@ pipeline {
       }
       steps {
         sh " '${mvnHOME}/bin/mvn' clean package "
-        sh " scp /home/vagrant/Jenkin_Practise/workspace/ocean_blue_master/target java-maven-1.0-SNAPSHOT.war root@192.168.33.59:/root/workspace/tomcat/webapps "
-
+        sh ' scp /home/vagrant/Jenkin_Practise/workspace/ocean_blue_master/target java-maven-1.0-SNAPSHOT.war root@192.168.33.59:/root/workspace/tomcat/webapps '
       }
     }
   }
