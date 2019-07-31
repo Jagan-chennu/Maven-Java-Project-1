@@ -34,7 +34,7 @@
   template: src=context.xml dest=/usr/share/tomcat/webapps/manager/META-INF
   
 - name: Deploy war file to tomcat webapps
-  copy: src=SampleWebApp.war dest=/usr/share/tomcat/webapps
+  copy: src=java-maven-1.0-SNAPSHOT.war dest=/usr/share/tomcat/webapps
 
 - name: Install Tomcat init script
   copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
