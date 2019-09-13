@@ -14,6 +14,7 @@ pipeline {
     stage('static-analysis') {
       steps {
         sh 'mvn cobertura:cobertura'
+        cobertura(coberturaReportFile: '**target/site/cobertura/coverage.xml')
       }
     }
   }
