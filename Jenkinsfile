@@ -17,5 +17,11 @@ pipeline {
         cobertura(coberturaReportFile: '**target/site/cobertura/coverage.xml')
       }
     }
+    stage('build') {
+      steps {
+        sh 'mvn clean deploy'
+        realtimeJUnit(testResults: '**/target/surefire-reports/*.xml')
+      }
+    }
   }
 }
