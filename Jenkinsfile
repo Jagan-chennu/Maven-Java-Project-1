@@ -18,7 +18,4 @@ pipeline {
       }
     }
   }
-  environment {
-    mvnHome = '/opt/maven'
-  }
 }
