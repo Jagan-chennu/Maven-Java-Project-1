@@ -11,6 +11,11 @@ pipeline {
         sh 'mvn -v'
       }
     }
+    stage('static-analysis') {
+      steps {
+        sh 'mvn cobertura:cobertura'
+      }
+    }
   }
   environment {
     mvnHome = '/opt/maven'
