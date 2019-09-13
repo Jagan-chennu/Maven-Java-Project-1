@@ -20,7 +20,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'mvn clean deploy'
-        realtimeJUnit(testResults: '**/target/surefire-reports/*.xml')
+        realtimeJUnit(testResults: 'target/surefire-reports/*.xml')
       }
     }
   }
