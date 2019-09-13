@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('preparation') {
       steps {
-        sh 'mvnHome= tool \'maven 3.6\''
+        sh 'mvn -v'
       }
     }
   }
