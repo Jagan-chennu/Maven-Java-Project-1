@@ -1,3 +1,10 @@
+
+def remote = [:]
+    	remote.name = 'deploy'
+    	remote.host = '172.16.10.25'
+    	remote.user = 'root'
+    	remote.password = 'vagrant'
+    	remote.allowAnyHosts = true
 pipeline {
   agent {
     node {
