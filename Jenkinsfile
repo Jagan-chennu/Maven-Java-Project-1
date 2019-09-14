@@ -45,9 +45,11 @@ pipeline {
 		    }
     	 }
    stage('Remote SSH') {
+	   steps {
       sshCommand remote: remote1, command: "cd ~"
       sshCommand remote: remote1, command: "git clone https://github.com/narendrasai316/ansible-files.git"
-    }
+	  }
+	   }
   
    
   stage('Deploy-to-prod') {
@@ -58,8 +60,10 @@ pipeline {
 		    }
     	 } 
    stage('Remote SSH') {
+	   steps {
       sshCommand remote: remote1, command: "ansible webservers -m ping"
       sshCommand remote: remote1, command: "ansible-playbook /home/ansible/ansible-files/Ansible Roles/tomcat.yml"
-    }
+	  }
+	   }
   }
 }
