@@ -1,3 +1,17 @@
+def remote = [:]
+    	remote.name = 'deploy'
+    	remote.host = '172.16.10.25'
+    	remote.user = 'root'
+    	remote.password = 'vagrant'
+	    remote.allowAnyHosts = true
+def remote1 = [:]
+	  remote2.name = 'deploy1'
+	  remote.host = '172.16.10.25'
+    remote1.user = 'ansible'
+    remote1.password = 'ansible'
+	  remote1.allowAnyHosts = true
+
+
 pipeline {
   agent {
     node {
