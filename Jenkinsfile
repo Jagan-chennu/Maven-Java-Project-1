@@ -3,12 +3,12 @@ def remote = [:]
     	remote.host = '172.16.10.25'
     	remote.user = 'root'
     	remote.password = 'vagrant'
-	    remote.allowAnyHosts = true
+	remote.allowAnyHosts = true
 def remote1 = [:]
-	  remote2.name = 'deploy1'
-	  remote.host = '172.16.10.25'
-    remote1.user = 'ansible'
-    remote1.password = 'ansible'
+	  remote1.name = 'deploy1'
+	  remote1.host = '172.16.10.22'
+          remote1.user = 'ansible'
+          remote1.password = 'ansible'
 	  remote1.allowAnyHosts = true
 
 
