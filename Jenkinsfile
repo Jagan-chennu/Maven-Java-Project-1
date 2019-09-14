@@ -59,7 +59,7 @@ pipeline {
 			sshPut remote: remote1, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/home/ansible/ansible-files/Ansible Roles/tomcat/files/'		        
 		    }
     	 } 
-   stage('Remote SSH') {
+   stage('Remote SSH1') {
 	   steps {
       sshCommand remote: remote1, command: "ansible webservers -m ping"
       sshCommand remote: remote1, command: "ansible-playbook /home/ansible/ansible-files/Ansible Roles/tomcat.yml"
