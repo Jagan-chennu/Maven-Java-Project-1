@@ -63,7 +63,7 @@ pipeline {
 	   steps {
       sshCommand remote: remote1, command: "ansible webservers -m ping"
       sshCommand remote: remote1, command: "cd /home/ansible/ansible-files/Ansible-Roles/"
-      sshCommand remote: remote1, command: "ansible-playbook tomcat.yml"
+      sshCommand remote: remote1, command: "sudo ansible-playbook tomcat.yml"
 	  }
 	   }
   }
