@@ -35,7 +35,7 @@ pipeline {
 		   // steps {
 		        //sshScript remote: remote, script: "abc.sh"  	
 			//sshPut remote: remote, from: 'target/java-maven-1.0-SNAPSHOT.war', into: '/home/vagrant/tomcat/webapps'		        
-		    }
-    	}
+		   // }
+    	// }
   }
 }
