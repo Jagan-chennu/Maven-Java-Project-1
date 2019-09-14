@@ -62,7 +62,7 @@ pipeline {
    stage('Remote SSH1') {
 	   steps {
       sshCommand remote: remote1, command: "ansible webservers -m ping"
-      sshCommand remote: remote1, command: "ansible-playbook /home/ansible/ansible-files/Ansible Roles/tomcat.yml"
+      sshCommand remote: remote1, command: "ansible-playbook /home/ansible/ansible-files/Ansible\ Roles/tomcat.yml"
 	  }
 	   }
   }
